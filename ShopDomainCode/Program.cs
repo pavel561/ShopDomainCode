@@ -10,19 +10,37 @@ namespace ShopDomainCode
 	{
 		static void Main(string[] args)
 		{
+			Shop shop = new Shop();
 		}
 	}
-	class Shop
+	public class Shop
 	{
-
+		string ShopName;
+		public Basket basket;
+		public ShopDataBase shopDataBase;
+		public Shop()
+		{
+			ShopName = "unnamed shop";
+			basket = new Basket();
+			shopDataBase = new ShopDataBase();
+		}
 	}
+	public class ShopDataBase:Shop
+	{
+		List<Product> dataBaseList;
+		public ShopDataBase()
+		{
+			dataBaseList = new List<Product>();
+		}
+	}
+
 	//Класс, описывающий товар интернет магазина
 	//Любой товар, независимо от вида, имеет:
 	/* Стоимость
-	 * Вес(необходимо учитывать при доставке)
-	 * Размеры (также необходимо учитывать при доставке)
+	 * Вес(необходимо учитывать при доставке и хранении)
+	 * Размеры (также необходимо учитывать при доставке и хранении)
 	 */
-	public abstract class Product
+	public abstract class Product:ShopDataBase
 	{
 		public int Cost { get; } = 0;
 		public int Weight { get; } = 0;
@@ -65,6 +83,7 @@ namespace ShopDomainCode
 	// Класс описывающий электронику
 	public class Electronics:Product
 	{
+
 		public enum TypeEnum { None = 0, Portable, Stationary, ForCar, Weatherproof};
 		public TypeEnum Type;
 		public Electronics(string type, string Name, int Cost):base(Name,Cost)
@@ -72,12 +91,18 @@ namespace ShopDomainCode
 			Type =(TypeEnum) Enum.Parse(typeof(TypeEnum), type);
 
 		}
+		public Electronics()
+		{
+
+		}
 	}
 	//Класс описывающий одежду
 	public class Clothes:Product
 	{
 		public enum SexEnum { None = 0, Men, Wumen, Unisex }
+		public enum SizeEnum { L = 1, XL, S, XS, M, XXL}
 		public SexEnum Sex;
+		public SizeEnum Size;
 		public Clothes(string sex, string name, int cost):base(name,cost)
 		{
 			Sex = (SexEnum)Enum.Parse(typeof(SexEnum), sex);
@@ -85,7 +110,7 @@ namespace ShopDomainCode
 
 	}
 
-	public class Basket
+	public class Basket:Shop
 	{
 		/* По хорошему, в корзине нужно организовать хранение не просто листа товаров,
 		 * а листа с массивами товаров одного типа (наименования),
@@ -97,7 +122,7 @@ namespace ShopDomainCode
 		 */
 		public List<Product> BasketList;
 		// Конструктор
-		Basket()
+		public Basket()
 		{
 			BasketList = new List<Product>();
 		}
