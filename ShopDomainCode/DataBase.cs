@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 
 namespace ShopDomainCode
 {
-	class Program
+	public class DataBase
 	{
-		static void Main(string[] args)
+		List<Product> dataBaseList;
+		public DataBase()
 		{
-			Shop shop = new Shop();
-			shop.NewConnection();
+			dataBaseList = new List<Product>();
 		}
 	}
-	
-	
 }

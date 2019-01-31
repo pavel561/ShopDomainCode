@@ -6,14 +6,7 @@ using System.Threading.Tasks;
 
 namespace ShopDomainCode
 {
-	class Program
+	public class Furniture:Product
 	{
-		static void Main(string[] args)
-		{
-			Shop shop = new Shop();
-			shop.NewConnection();
-		}
 	}
-	
-	
 }
