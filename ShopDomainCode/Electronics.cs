@@ -17,6 +17,12 @@ namespace ShopDomainCode
 			Type = (TypeEnum)Enum.Parse(typeof(TypeEnum), type);
 
 		}
+		public Electronics(string Name, int Cost) : base(Name, Cost)
+		{
+			//Type = (TypeEnum)Enum.Parse(typeof(TypeEnum), type);
+			this.Name = Name;
+			this.Cost = Cost;
+		}
 		public Electronics()
 		{
 

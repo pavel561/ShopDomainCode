@@ -14,10 +14,10 @@ namespace ShopDomainCode
 	 */
 	abstract public class Product
 	{
-		public int Cost { get; } = 0;
-		public int Weight { get; } = 0;
+		public int Cost { get; protected set; } = 0;
+		public int Weight { get; protected set; } = 0;
 
-		public string Name { get; }
+		public string Name { get; protected set; }
 
 		//public struct Size
 		//{

@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="Basket.cs" />
     <Compile Include="Clothes.cs" />
-    <Compile Include="DataBase.cs" />
     <Compile Include="Electronics.cs" />
     <Compile Include="Furniture.cs" />
     <Compile Include="Order.cs" />
